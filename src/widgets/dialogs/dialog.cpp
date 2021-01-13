@@ -38,7 +38,8 @@ void Dialog::setDialogButtonBox(QDialogButtonBox::StandardButtons p_buttons,
         m_dialogButtonBox = new QDialogButtonBox(p_buttons, this);
         connect(m_dialogButtonBox, &QDialogButtonBox::accepted,
                 this, &Dialog::acceptedButtonClicked);
-        connect(m_dialogButtonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+        connect(m_dialogButtonBox, &QDialogButtonBox::rejected,
+                this, &Dialog::rejectedButtonClicked);
         connect(m_dialogButtonBox, &QDialogButtonBox::clicked,
                 this, [this](QAbstractButton *p_button) {
                     switch (m_dialogButtonBox->buttonRole(p_button)) {
@@ -117,6 +118,11 @@ void Dialog::setInformationText(const QString &p_text, InformationLevel p_level)
 void Dialog::acceptedButtonClicked()
 {
     QDialog::accept();
+}
+
+void Dialog::rejectedButtonClicked()
+{
+    QDialog::reject();
 }
 
 void Dialog::resetButtonClicked()

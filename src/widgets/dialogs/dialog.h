@@ -41,6 +41,8 @@ namespace vnotex
     protected:
         virtual void acceptedButtonClicked();
 
+        virtual void rejectedButtonClicked();
+
         virtual void resetButtonClicked();
 
         virtual void appliedButtonClicked();

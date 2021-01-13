@@ -320,6 +320,18 @@ QString ConfigMgr::getUserThemeFolder() const
     return folderPath;
 }
 
+QString ConfigMgr::getAppWebStylesFolder() const
+{
+    return PathUtils::concatenateFilePath(m_appConfigFolderPath, QStringLiteral("web-styles"));
+}
+
+QString ConfigMgr::getUserWebStylesFolder() const
+{
+    auto folderPath = PathUtils::concatenateFilePath(m_userConfigFolderPath, QStringLiteral("web-styles"));
+    QDir().mkpath(folderPath);
+    return folderPath;
+}
+
 QString ConfigMgr::getAppDocsFolder() const
 {
     return PathUtils::concatenateFilePath(m_appConfigFolderPath, QStringLiteral("docs"));
@@ -405,4 +417,19 @@ QString ConfigMgr::getApplicationFilePath()
 QString ConfigMgr::getApplicationDirPath()
 {
     return PathUtils::parentDirPath(getApplicationFilePath());
+}
+
+QString ConfigMgr::getDocumentOrHomePath()
+{
+    static QString docHomePath;
+    if (docHomePath.isEmpty()) {
+        QStringList folders = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
+        if (folders.isEmpty()) {
+            docHomePath = QDir::homePath();
+        } else {
+            docHomePath = folders[0];
+        }
+    }
+
+    return docHomePath;
 }

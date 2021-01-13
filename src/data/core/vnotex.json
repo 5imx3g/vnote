@@ -24,7 +24,8 @@
             "MaximizeSplit" : "Ctrl+G, Shift+\\",
             "DistributeSplits" : "Ctrl+G, =",
             "RemoveSplitAndWorkspace" : "Ctrl+G, R",
-            "NewWorkspace" : "Ctrl+G, N"
+            "NewWorkspace" : "Ctrl+G, N",
+            "Export" : "Ctrl+G, T"
         },
         "toolbar_icon_size" : 16
     },
